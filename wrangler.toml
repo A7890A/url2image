@@ -1,0 +1,14 @@
+name = "url2image-worker"
+main = "./worker/index.js"
+compatibility_date = "2023-08-20"
+
+[build]
+command = "npm run build --prefix frontend"
+upload.format = "service-pack"
+
+[wasm_modules]
+steg = "./worker/steg.wasm"
+
+[[routes]]
+pattern = "api.3815147.ip-ddns.com/*"
+zone_name = "3815147.ip-ddns.com"
