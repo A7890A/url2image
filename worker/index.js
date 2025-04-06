@@ -1,5 +1,5 @@
 // 导入 WASM 隐写模块
-import steg from './wasm_steg_bg.wasm'
+import steg from 'wasm_steg_bg.wasm'
 
 // 响应头配置
 const CORS_HEADERS = {
