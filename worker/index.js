@@ -5,6 +5,7 @@ export default {
     const { pathname } = new URL(request.url)
     
     if (pathname === '/api/generate' && request.method === 'POST') {
+      try {
       const { image, url } = await request.json()
       
       const output = steg.embedQR(
@@ -19,9 +20,14 @@ export default {
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type'
     }
-  });
+  }
+                      }
+  }catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), { 
+      status: 500,
+      headers: { 'Content-Type': 'application/json' });
 }
     
     return new Response('欢迎使用网址转化图片服务')
-  }
+  
 }
