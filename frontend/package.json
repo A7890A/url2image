@@ -1,8 +1,9 @@
 {
   "dependencies": {
-    "lsb-steg": "^1.2.0",
+    "crypto-js": "^4.1.1",
     "qrcode": "^1.5.1",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "steganography.js": "^1.0.0"
   },
   "scripts": {
     "dev": "vite",
