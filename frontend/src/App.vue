@@ -35,7 +35,8 @@ const generate = async () => {
   )
   
   preview.value = URL.createObjectURL(new Blob([result]))
-}
+}catch (error) {
+    alert(`生成失败: ${error.message}`);
   }
 </script>
 
