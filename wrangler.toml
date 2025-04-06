@@ -4,7 +4,8 @@ compatibility_date = "2025-04-06"
 node_compat = true
 
 [build]
-command = "npm install -g @cloudflare/wrangler && cd frontend && npm install && npm run build"
+command = "rm -rf node_modules && npm install -g @cloudflare/wrangler && cd frontend && npm ci && npm run build"
+
 upload.format = "service-pack"
 watch_dir = "frontend"
 
