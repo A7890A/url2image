@@ -3,11 +3,12 @@ main = "./worker/index.js"
 compatibility_date = "2025-04-06"
 
 [build]
-command = "npm run build --prefix frontend"
+command = "cd frontend && npm install && npm run build"
 upload.format = "service-pack"
+watch_dir = "frontend"
 
 [wasm_modules]
-steg = "./worker/wasm_steg_bg.wasm"
+steg = "worker/wasm_steg_bg.wasm"
 
 [[routes]]
 pattern = "api.3815147.ip-ddns.com/*"
