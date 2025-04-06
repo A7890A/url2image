@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     target: 'es2020',
-    outDir: '../dist'
+    outDir: './dist'
   },
   server: {
     proxy: {
