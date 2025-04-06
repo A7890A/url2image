@@ -1,10 +1,10 @@
 name = "url2image-worker"
 main = "worker/index.js"
 compatibility_date = "2025-04-06"
+compatibility_flags = ["nodejs_compat"]  # 移到顶层
 
 [build]
 command = "cd frontend && npm ci && npm run build"
-compatibility_flags = ["nodejs_compat"]
 watch_dir = "frontend"
 
 [wasm_modules]
@@ -14,11 +14,10 @@ steg = "worker/wasm_steg_bg.wasm"
 pattern = "api.3815147.ip-ddns.com/*"
 zone_name = "3815147.ip-ddns.com"
 
-# 环境配置
 [env.production]
 account_id = "5439bb392e8ce94c6683944cbcc1e61a"  # 替换为你的 Cloudflare 账户 ID
 workers_dev = false
-route = ""  # 如果需要绑定生产环境的路由
+# 移除空的 route 字段
 
 # 可选：开发环境配置
 [env.development]
