@@ -1,9 +1,10 @@
 name = "url2image-worker"
-main = "./worker/index.js"
+main = "worker/index.js"
 compatibility_date = "2025-04-06"
+node_compat = true
 
 [build]
-command = "cd frontend && npm install && npm run build"
+command = "npm install -g @cloudflare/wrangler && cd frontend && npm install && npm run build"
 upload.format = "service-pack"
 watch_dir = "frontend"
 
@@ -13,3 +14,7 @@ steg = "worker/wasm_steg_bg.wasm"
 [[routes]]
 pattern = "api.3815147.ip-ddns.com/*"
 zone_name = "3815147.ip-ddns.com"
+
+[env]
+# 显式指定安装路径
+PATH = "/usr/local/bin:${PATH}"
