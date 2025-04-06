@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "crypto-js": "^4.1.1",
     "lsb-steg": "^1.2.0",
     "qrcode": "^1.5.1",
     "vue": "^3.3.4"
