@@ -21,6 +21,7 @@ const selectedFile = ref(null)
 const preview = ref(null)
 
 const generate = async () => {
+  try {
   const qrData = await QRCode.toDataURL(targetUrl.value, {
     errorCorrectionLevel: 'H',
     margin: 2,
@@ -35,6 +36,7 @@ const generate = async () => {
   
   preview.value = URL.createObjectURL(new Blob([result]))
 }
+  }
 </script>
 
 <style>
