@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to Cloudflare Workers
 
 on:
   push:
@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      # 安装 Node.js 和依赖
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -16,7 +18,13 @@ jobs:
           cd frontend
           npm install
           npm run build
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/dist
+
+      # 安装 wrangler 并部署到 Cloudflare
+      - name: Install Wrangler
+        run: npm install -g @cloudflare/wrangler
+
+      - name: Deploy Worker
+        run: wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
