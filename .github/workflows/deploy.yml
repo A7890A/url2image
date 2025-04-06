@@ -13,19 +13,33 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+
+      - name: Cache frontend dependencies
+        uses: actions/cache@v3
+        with:
+          path: frontend/node_modules
+          key: ${{ runner.os }}-frontend-${{ hashFiles('frontend/package-lock.json') }}
+
+      - name: Cache worker dependencies
+        uses: actions/cache@v3
+        with:
+          path: worker/node_modules
+          key: ${{ runner.os }}-worker-${{ hashFiles('worker/package-lock.json') }}
 
       - name: Install Dependencies
         working-directory: ./frontend
         run: |
-          npm ci --legacy-peer-deps  # 解决可能的 peer 依赖冲突
+          npm ci --legacy-peer-deps
 
       - name: Build Frontend
         working-directory: ./frontend
         run: npm run build
 
+      - name: Install Wrangler (if needed)
+        run: npm install -g wrangler
+
       - name: Deploy Worker
+        working-directory: ./worker  # 确保在 worker 目录下执行
         run: wrangler deploy --env production
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
