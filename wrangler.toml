@@ -4,7 +4,7 @@ compatibility_date = "2025-04-06"
 compatibility_flags = ["nodejs_compat"]
 
 [build]
-command = "cd frontend && npm ci && npm run build"
+command = "cmd /c \"cd /d frontend && npm ci && npm run build\""
 watch_dir = "frontend"
 
 [wasm_modules]
