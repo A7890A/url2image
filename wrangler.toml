@@ -7,7 +7,7 @@ command = "npm run build --prefix frontend"
 upload.format = "service-pack"
 
 [wasm_modules]
-steg = "./worker/steg.wasm"
+steg = "./worker/wasm_steg_bg.wasm"
 
 [[routes]]
 pattern = "api.3815147.ip-ddns.com/*"
