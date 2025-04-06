@@ -1,7 +1,7 @@
 name = "url2image-worker"
 main = "worker/index.js"
 compatibility_date = "2025-04-06"
-compatibility_flags = ["nodejs_compat"]  # 移到顶层
+compatibility_flags = ["nodejs_compat"]
 
 [build]
 command = "cd frontend && npm ci && npm run build"
@@ -17,8 +17,6 @@ zone_name = "3815147.ip-ddns.com"
 [env.production]
 account_id = "5439bb392e8ce94c6683944cbcc1e61a"  # 替换为你的 Cloudflare 账户 ID
 workers_dev = false
-# 移除空的 route 字段
 
-# 可选：开发环境配置
 [env.development]
 workers_dev = true
