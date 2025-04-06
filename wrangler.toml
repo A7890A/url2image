@@ -1,11 +1,10 @@
 name = "url2image-worker"
 main = "worker/index.js"
 compatibility_date = "2025-04-06"
-nodejs_compat = true
 
 [build]
 command = "rm -rf node_modules && npm install -g @cloudflare/wrangler && cd frontend && npm ci && npm run build"
-
+compatibility_flags = ["nodejs_compat"]
 watch_dir = "frontend"
 
 [wasm_modules]
@@ -18,3 +17,7 @@ zone_name = "3815147.ip-ddns.com"
 [env]
 # 显式指定安装路径
 PATH = "/usr/local/bin:${PATH}"
+
+[env.production]
+account_id = "your_account_id"
+workers_dev = true
