@@ -1,4 +1,4 @@
-import steg from './steg.wasm'
+import steg from './wasm_steg_bg.wasm'
 
 export default {
   async fetch(request) {
