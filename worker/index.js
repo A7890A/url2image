@@ -12,13 +12,15 @@ export default {
         new TextEncoder().encode(url)
       )
       
-      return new Response(output, {
-        headers: { 
-          'Content-Type': 'image/png',
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
+     if (request.method === 'OPTIONS') {
+  return new Response(null, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type'
     }
+  });
+}
     
     return new Response('欢迎使用网址转化图片服务')
   }
